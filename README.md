@@ -36,18 +36,6 @@
 
 - belongs_to :user
 - has_one    :buyer
-- has_many   :images, dependent: :destroy
-
-## images テーブル
-
-| Column             | Type       | Options                        |
-| -------------------|------------| -------------------------------|
-| image              | string     | null: false                    |
-| item               | references | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to :item
 
 ## buyers テーブル
 
@@ -71,7 +59,7 @@
 | city               | string     | null: false                    |
 | address            | string     | null: false                    |
 | building_name      | string     |                                |
-| phone_number       | string     | null: false, unique: true      |
+| phone_number       | string     | null: false    |
 | buyer              | references | null: false  foreign_key: true |
 
 ### Association
