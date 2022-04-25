@@ -9,7 +9,7 @@ class User < ApplicationRecord
     validates :birth_date
   end
 
-  with_options presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/ } do
+  with_options presence: true, format: { with: /\A([ぁ-んァ-ン一-龥]|ー)+\z/ } do
     validates :family_name
     validates :first_name
   end
