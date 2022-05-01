@@ -62,6 +62,12 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include "Prefecture can't be blank"
       end
+      it "priceが300~9999999の間でない場合は登録できないこと" do
+        @item.image = fixture_file_upload('app/assets/images/flag.png')
+        @item.price = '10'
+        @item.valid?
+        expect(@item.errors.full_messages).to include "Price is not included in the list"
+      end
     end
   end
 end
