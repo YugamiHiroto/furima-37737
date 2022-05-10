@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe BuyerAddress, type: :model do
   describe '購入情報の保存' do
     before do
-      user = FactoryBot.create(:user)     
+      user = FactoryBot.create(:user)
       @buyer_address = FactoryBot.build(:buyer_address, user_id: user.id)
     end
 
@@ -51,9 +51,9 @@ RSpec.describe BuyerAddress, type: :model do
       it 'phone_numberが10桁以上11桁未満の半角でないと保存できないこと' do
         @buyer_address.phone_number = '090-1234-5678'
         @buyer_address.valid?
-        expect(@buyer_address.errors.full_messages).to include("Phone number is invalid")
+        expect(@buyer_address.errors.full_messages).to include('Phone number is invalid')
       end
-      it "tokenが空では登録できないこと" do
+      it 'tokenが空では登録できないこと' do
         @buyer_address.token = nil
         @buyer_address.valid?
         expect(@buyer_address.errors.full_messages).to include("Token can't be blank")
@@ -61,4 +61,3 @@ RSpec.describe BuyerAddress, type: :model do
     end
   end
 end
-
