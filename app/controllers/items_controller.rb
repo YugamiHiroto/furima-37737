@@ -24,23 +24,25 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    redirect_to root_path if @item.buyer.present?
   end
 
   def update
-     if @item.update(item_params)
-       redirect_to item_path(@item)  
-     else
+    if @item.update(item_params)
+      redirect_to item_path(@item)
+    else
+      # @item = Item.find(params[:item_id])
       render :edit
-     end
-  end
-  
-  def destroy
-      if @item.user_id == current_user.id && @item.destroy
-        redirect_to root_path
-      else
-        redirect_to root_path
-      end
     end
+  end
+
+  def destroy
+    if @item.user_id == current_user.id && @item.destroy
+      redirect_to root_path
+    else
+      redirect_to root_path
+    end
+  end
 
   private
 

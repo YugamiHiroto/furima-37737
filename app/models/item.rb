@@ -7,6 +7,7 @@ class Item < ApplicationRecord
   belongs_to :prefecture
 
   belongs_to :user
+  has_one    :buyer, dependent: :destroy
 
   has_one_attached :image
 
